@@ -7,7 +7,7 @@ app.use(express.static('public'));
 
 app.use('/proxy', createProxyMiddleware({
   changeOrigin: true,
-  target: '', // dynamically set in the query
+  target: '',
   router: (req) => req.query.url,
   onProxyReq(proxyReq, req) {
     if (req.query.url) proxyReq.setHeader('Host', new URL(req.query.url).host);
